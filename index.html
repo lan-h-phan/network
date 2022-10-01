@@ -1,1 +1,244 @@
-This is going to be where the CCA Game is hosted
+<!--
+
+Cross-Cultural Adaptivity Game
+by Lan Phan
+October 1, 2022
+
+This is going to be an attempt to make a game learning from Nicky Case's design.
+
+We will see how this goes.
+
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+        <!--Meta Info-->
+        <title>Cross-Cultural Adaptivity</title> <!-- <title>(TRANSLATE this part only)</title> -->
+	      <meta name="description" content="an interactive guide to conflict resolution training"/> <!-- content="(TRANSLATE this part only)" -->
+	      <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+      	<meta content="utf-8" http-equiv="encoding">
+      	<meta charset="utf-8">
+	      <link rel="icon" type="image/png" href="favicon.png">
+  
+        <!-- Styles -->
+      	<link rel="stylesheet" type="text/css" href="css/index.css?v=7">
+
+</head>
+<body>
+  
+        <!-- THE SLIDESHOW -->
+	<div id="container">
+
+		<!-- Simulation(s) in background -->
+		<div id="simulations_container">
+			<div id="simulations"></div>
+		</div>
+
+		<!-- Slideshow: words & buttons -->
+		<div id="slideshow_container">
+			<div id="slideshow"></div>
+		</div>
+
+		<!-- Scratch Transition -->
+		<canvas id="scratch" width="711" height="400"></canvas>
+
+		<!-- Skip -->
+		<div id="skip">skip &gt;</div> <!-- TRANSLATE -->
+
+		<!-- Modal -->
+		<div id="modal_container">
+			<div id="modal_bg"></div>
+			<div id="modal">
+				<div id="modal_close">⨯</div>
+				<div id="modal_content_container">
+					<div id="modal_content"></div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+  
+  	<!-- Navigation: Audio, Contents, Share, Translations -->
+	<div id="navigation_container">
+		<div id="sound" mute="no">
+			<div id="sound_icon"></div>
+			<span id="sound_on">ON</span> <!-- TRANSLATE -->
+			<span id="sound_off">OFF</span> <!-- TRANSLATE -->
+		</div>
+		<div id="sharing">
+			<a id="fb" target="_blank" href="TODO"></a>
+			<a id="tw" target="_blank" href="TODO"></a>
+			<a id="em" target="_blank" href="TODO"></a>
+			<span id="share_title">
+			The Wisdom and/or Madness of Crowds <!-- TRANSLATE -->
+			</span>
+			<span id="share_desc">
+			<!-- TRANSLATOR: keep this on ONE LINE or the social sharing will break! -->
+			Why do groups of people act smart, dumb, kind, cruel? An interactive guide to human networks: <!-- TRANSLATE -->
+			</span>
+		</div>
+		<div id="navigation">
+
+			<!-- The chapters -->
+			<!-- TRANSLATE all the Chapter names! -->
+			<div chapter="Introduction">
+				<span>0</span>
+				<span>0. Introduction</span>
+			</div>
+			<div chapter="Networks">
+				<span>1</span>
+				<span>1. Connections</span>
+			</div>
+			<div chapter="Simple">
+				<span>2</span>
+				<span>2. Contagions</span>
+			</div>
+			<div chapter="Complex">
+				<span>3</span>
+				<span>3. Complex Contagions</span>
+			</div>
+			<div chapter="BB">
+				<span>4</span>
+				<span>4. Bonding &amp; Bridging</span> <!-- note: &amp; is html for the "and" sign -->
+			</div>
+			<div chapter="SmallWorld">
+				<span>5</span>
+				<span>5. It's A Small World</span>
+			</div>
+			<div chapter="Conclusion">
+				<span>6</span>
+				<span>6. In Conclusion...</span>
+			</div>
+			<div chapter="Credits">
+				<span>7</span>
+				<span>7. Credits</span>
+			</div>
+			<div chapter="Sandbox">
+				<span>★</span>
+				<span>★ Sandbox Mode! ★</span>
+			</div>
+
+			<!-- A divider -->
+			<span class="nav_divider"></span>
+			
+			<!-- Bonus Notes & References -->
+			<div modal="bonus">
+				<span>?</span>
+				<span>Bonus Boxes!</span> <!-- TRANSLATE -->
+			</div>
+			<div modal="references">
+				<span style="margin-top: 7px; font-size: 35px;">*</span>
+				<span>Links &amp; References</span> <!-- TRANSLATE -->
+			</div>
+			<div modal="translations">
+			<span style="margin-top:5px; position:relative;"><span style="
+				    position: absolute;
+				    top: -8px;
+				    left: 6px;
+				">A</span><span style="
+				    position: absolute;
+				    font-size: 16px;
+				    top: -1px;
+				    left: 16px;
+				">あ</span></span>
+				<span>Translations</span> <!-- TRANSLATE -->
+			</div>
+
+			<!-- The hover bubble -->
+			<span id="nav_bubble"></span>
+			
+		</div>
+		<div id="translations"></div>
+		<div id="social"></div>
+	</div>
+	
+	<!-- The Pencil -->
+	<div id="pencil_container">
+		<canvas id="pencil"></canvas>
+	</div>
+
+	<!-- Preloader -->
+	<div id="pre_preloader">
+		<div>loading...</div> <!-- TRANSLATE -->
+	</div>
+
+</body>
+</html>
+
+
+<!-- - - - - -->
+<!-- SCRIPTS -->
+<!-- - - - - -->
+
+<script src="js/lib/helpers.js"></script>
+<script src="js/lib/inobounce.js"></script>
+<script src="js/lib/minpubsub.src.js"></script>
+<script src="js/lib/howler.min.js"></script>
+<script src="js/lib/Key.js"></script>
+<script src="js/lib/Mouse.js"></script>
+<script src="js/lib/Sprite.js"></script>
+
+<script src="js/slideshow/Slideshow.js"></script>
+<script src="js/slideshow/Pencil.js"></script>
+<script src="js/slideshow/Boxes.js"></script>
+<script src="js/slideshow/Scratch.js"></script>
+<script src="js/slideshow/Navigation.js"></script>
+<script src="js/slideshow/SimUI.js"></script>
+<script src="js/slideshow/SandboxUI.js"></script>
+<script src="js/slideshow/Modal.js?v=5"></script>
+<script src="js/slideshow/Preloader.js"></script>
+
+<script src="js/sim/Peep.js?v=2"></script>
+<script src="js/sim/Connection.js"></script>
+<script src="js/sim/ConnectorCutter.js"></script>
+<script src="js/sim/Simulations.js"></script>
+
+<script src="js/chapters/A_Preloader.js"></script>
+
+
+<script src="js/main.js"></script>
+
+<!-- - - - - - - - - - - - -->
+<!-- THE SLIDESHOW'S WORDS -->
+<!-- - - - - - - - - - - - -->
+
+
+<span style="display:none">
+
+<!-- Preloader -->
+
+<words id="preloader_title">
+
+	<div style="font-size: 30px;">
+		<span>the</span>
+		<br>
+		<span style="font-size: 60px;letter-spacing: 4px;">Cross</span>
+		<span style="position:relative;top: -10px;">Cultural</span>
+		<span style="font-size: 60px;">Adaptivitiy</span>
+		<br>
+		<span style="position: relative;top: -11px;">in</span>
+		<br>
+		<span style="font-size: 100px;line-height: 80px;position: relative;top: -15px; display:block;">Training</span>
+	</div>
+
+	<div style="color:#999">
+		playing time: 30 min • by lan phan, oct 2022
+	</div>
+
+</words>
+
+<words id="preloader_button">
+	<next></next>
+</words>
+
+<words id="preloader_loading">
+	loading...
+</words>
+
+<words id="preloader_play">
+	let's play! <div class="rarr"></div> 
+</words>
+
+</span>
