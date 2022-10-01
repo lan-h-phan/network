@@ -60,10 +60,6 @@ subscribe("preload", function(){
 		{id:"trash", audio:"audio/trash.mp3"},
 
 		// For the slides
-		{id:"icons/blue", image:"sprites/icons/blue.png"},
-		{id:"icons/gray", image:"sprites/icons/gray.png"},
-		{id:"icons/red", image:"sprites/icons/red.png"},
-		{id:"icons/yellow", image:"sprites/icons/yellow.png"},
 		{id:"confetti", image:"sprites/confetti.png"},
 		{id:"nasa", image:"sprites/nasa.png"},
 		{id:"red_button", image:"sprites/red_button.png"},
